@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuenta Regresiva</title>
+    <script>
+        function iniciarCuentaRegresiva() {
+            const numero = parseInt(document.getElementById("numero").value);
+
+            if (!isNaN(numero) && numero > 0) {
+                mostrarCuentaRegresiva(numero);
+            } else {
+                alert("Ingrese un número entero positivo válido.");
+            }
+        }
+
+        function mostrarCuentaRegresiva(numero) {
+            let countdown = numero;
+            let countdownInterval = setInterval(function() {
+                if (countdown > 0) {
+                    document.getElementById("resultado").innerHTML = `Cuenta Regresiva: ${countdown}`;
+                    countdown--;
+                } else {
+                    clearInterval(countdownInterval);
+                    document.getElementById("resultado").innerHTML = "¡Cuenta Regresiva Completa!";
+                }
+            }, 1000); // Actualiza cada segundo (1000 milisegundos)
+        }
+    </script>
+</head>
+<body>
+
+    <h1>Cuenta Regresiva</h1>
+
+    <label for="numero">Ingrese un número entero positivo:</label>
+    <input type="number" id="numero" required>
+    <button onclick="iniciarCuentaRegresiva()">Iniciar Cuenta Regresiva</button>
+
+    <p id="resultado"></p>
+
+</body>
+</html>
